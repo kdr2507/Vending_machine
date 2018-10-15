@@ -22,9 +22,9 @@ class Vending_machine
         #メニュー
         puts "\n-----------------------------------------------------------"
         puts "投入した金額 : #{$inputPrice}円"
-        puts "10円玉、50円玉、100円玉、1000円さつを入れてください。"
         product_list()
-        puts "\n購入をしたいなら[-2]を、払い戻しなら[-1]を、管理を望むなら[0]を入力してください。"
+        puts "\n10円玉、50円玉、100円玉、1000円さつを入れてください。"
+        puts "購入をしたいなら[-2]を、払い戻しなら[-1]を、管理を望むなら[0]を入力してください。"
         order = gets.chomp
 
         case order
@@ -52,7 +52,7 @@ class Vending_machine
     def refund()
         #동전 환불
         #払い戻し
-        puts "\n-----------------------------------------------------------"
+        puts "-----------------------------------------------------------"
         printf("%d円払い戻しました。\n\n", $inputPrice)
         
         $inputPrice = 0
@@ -63,7 +63,9 @@ class Vending_machine
     def purchase()
         #구입
         #購入
-        puts "\n-----------------------------------------------------------"
+        puts "-----------------------------------------------------------\n"
+        printf("投入した金額 : %d円\n", $inputPrice)
+        product_list()
         puts "購入したい商品の番号を入力してください。（いちばん左にある数字です。）メニューに帰りたいなら[0]を、払い戻ししたいなら[-1]]を入力してください。"
         order = gets.chomp
         
@@ -126,6 +128,7 @@ class Vending_machine
             when "1" then return product_add()  #상품 추가  商品の追加
             when "2" then printf("売り出し：%d円\n",$sale)
                           return management()
+            else return management()
         end
         
     end
@@ -189,7 +192,7 @@ class Vending_machine
 
 
     def product_list()
-        puts "\n-----------------------------------------------------------"
+        puts "-----------------------------------------------------------"
         #자판기 재고 리스트
         #自動販売機の商品リスト
         puts "商品リスト"
@@ -208,10 +211,11 @@ class Vending_machine
             end
         end
         
+        
     end
     
     def product_list_management()
-        puts "\n-----------------------------------------------------------"
+        puts "-----------------------------------------------------------"
         #자판기 재고 리스트 관리
         #自動販売機の商品リスト管理
         puts "商品リスト"
@@ -222,6 +226,7 @@ class Vending_machine
             i += 1;
             
         end
+        
         
     end
 end
